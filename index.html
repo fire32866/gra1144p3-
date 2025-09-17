@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Hunt Animation</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('background.jpg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            overflow: hidden;
+            cursor: url('Cursor.png'), auto; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flapping-duck {
+            width: 250px;
+            height: auto;
+            position: absolute;
+        }
+
+        #flapping-duck-1 {
+            animation: flyAcross-1 12s linear infinite;
+        }
+
+        #flapping-duck-2 {
+            animation: flyAcross-2 15s linear infinite;
+        }
+
+        @keyframes flyAcross-1 {
+            0% { transform: translate(-250px, 15vh) scaleX(1); }
+            49% { transform: translate(calc(50vw - 125px), 25vh) scaleX(1); }
+            50% { transform: translate(calc(50vw - 125px), 25vh) scaleX(-1); }
+            99% { transform: translate(-250px, 20vh) scaleX(-1); }
+            100% { transform: translate(-250px, 20vh) scaleX(1); }
+        }
+
+        @keyframes flyAcross-2 {
+            0% { transform: translate(calc(100vw + 250px), 60vh) scaleX(-1); }
+            49% { transform: translate(calc(50vw - 125px), 50vh) scaleX(-1); }
+            50% { transform: translate(calc(50vw - 125px), 50vh) scaleX(1); }
+            99% { transform: translate(calc(100vw + 250px), 65vh) scaleX(1); }
+            100% { transform: translate(calc(100vw + 250px), 65vh) scaleX(-1); }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            padding: 10px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="flapping-duck-1" class="flapping-duck" src="duck-wings-up.png.png" alt="">
+    <img id="flapping-duck-2" class="flapping-duck" src="duck-wings-up.png.png" alt="">
+
+    <footer>
+        © 2025, Raul Diaz <br>
+        This is a fictitious web page created solely for the purpose of education and training. 
+        All products and people associated with this web page are also fictitious. 
+        Any resemblance to real brands, products, or people is purely coincidental. 
+        Information provided about the product is also fictitious and should not be construed 
+        to be representative of actual products on the market in a similar product category.
+    </footer>
+
+    <script>
+        // Duck 1 Animation
+        const duckImage1 = document.getElementById('flapping-duck-1');
+        const wingsUpSrc1 = 'duck-wings-up.png.png';
+        const wingsDownSrc1 = 'duck-wings-down.png.png';
+        let isWingsUp1 = true;
+
+        function flapWings1() {
+            duckImage1.src = isWingsUp1 ? wingsDownSrc1 : wingsUpSrc1;
+            isWingsUp1 = !isWingsUp1;
+        }
+        setInterval(flapWings1, 200);
+
+        // Duck 2 Animation
+        const duckImage2 = document.getElementById('flapping-duck-2');
+        const wingsUpSrc2 = 'duck-wings-up.png.png';
+        const wingsDownSrc2 = 'duck-wings-down.png.png';
+        let isWingsUp2 = true;
+
+        function flapWings2() {
+            duckImage2.src = isWingsUp2 ? wingsDownSrc2 : wingsUpSrc2;
+            isWingsUp2 = !isWingsUp2;
+        }
+        setInterval(flapWings2, 200);
+    </script>
+
+</body>
+</html>
